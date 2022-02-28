@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" method="post"
+		th:action="@{/aggiornastudente/{matricola}(matricola=${studente.getMatricola()})}"
+		th:object="${studente}">
+		<table>
+			<thead>
+				<tr>
+
+					<th data-priority="1">Matricola</th>
+					<th data-priority="2">Nome</th>
+					<th data-priority="3">Cognome</th>
+					<th data-priority="4">Data Nascita</th>
+					<th data-priority="5">Email</th>
+					<th data-priority="6">Indirizzo</th>
+					<th data-priority="7">Citta</th>
+					<th data-priority="8">Corso Laurea</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{matricola}" id="nome" disabled="disabled"
+						required="required"></td>
+					<td><input type="text" th:field="*{nome}" required="required"></td>
+					<td><input type="text" th:field="*{cognome}"
+						required="required"></td>
+					<td><input type="date" pattern="yyyy-MM-dd"
+						th:field="*{dataNascita}" required="required"></td>
+					<td><input type="email" th:field="*{email}"
+						required="required"></td>
+					<td><input type="text" th:field="*{indirizzo}"
+						required="required"></td>
+					<td><input type="text" th:field="*{citta}" required="required"></td>
+					
+					<td><select th:field="*{corsoLaura}">
+							<div th:each="c: ${corso}">	
+							<option th:value="${c.getCodiceCorso}" th:text="${c.getNomeCorso}" ></option> </div>
+					</select></td>
+
+				</tr>
+			</tbody>
+
+
+		</table>
+		<p>
+			<input type="submit" value="aggiorna" /> <input type="reset"
+				value="reset">
+		</p>
+	</form>
+</body>
+</html>

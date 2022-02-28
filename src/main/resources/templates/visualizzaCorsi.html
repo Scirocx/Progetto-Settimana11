@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
+<title>tutti i corsi</title>
+</head>
+<body>
+	<table>
+
+		<div th:each="o:${corsi}">
+			<tr>
+				<td th:text="${o.codiceCorso}"></td>
+				<td th:text="${o.nomeCorso}"></td>
+				<td th:text="${o.indirizzoCorso}"></td>
+				<td th:text="${o.numeroEsami}"></td>
+				<td><a
+					th:href="@{/formaggiornacorso/{codice}(codice=${o.getCodiceCorso()})}"
+					onclick="return confirm('Sei sicuro di volerlo aggiornare?')">Aggiorna</a></td>
+				<td><a
+					th:href="@{/cancellacorso/{codice}(codice=${o.getCodiceCorso()})}"
+					onclick="return confirm('Sei sicuro di volerlo elimibare?')">Elimina</a></td>
+
+			</tr>
+
+		</div>
+	</table>
+</body>
+</html>
